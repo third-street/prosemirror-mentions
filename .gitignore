@@ -1,0 +1,16 @@
+# editors
+/.idea
+
+# dependencies
+/node_modules
+/example/node_modules
+/example/dist/*.js
+/example/dist/*.map
+
+# misc.
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/.vs/slnx.sqlite
+/.vs/VSWorkspaceState.json
+/.vs/prosemirror-mentions/v16/.suo
