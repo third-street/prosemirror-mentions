@@ -156,6 +156,7 @@ function getMentionsPlugin(opts) {
 
   // dropdown element
   var el = document.createElement("div");
+  el.className = "suggestion-outer-list";
 
   // ----- methods operating on above properties -----
   var showList = function(view, state, opts) {
@@ -175,7 +176,6 @@ function getMentionsPlugin(opts) {
       var top = textDOM.offsetHeight + offset.top;
       el.style.top = top + "px";
       el.style.display = "block";
-      el.style.className = "suggestion-outer-list";
     }
 
     var onScroll = function() {
