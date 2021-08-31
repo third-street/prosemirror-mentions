@@ -357,22 +357,24 @@ function getMentionsPlugin(opts) {
 
   var select = function(view, state) {
     var item = state.suggestions[state.index];
-    var attrs;
-    if (state.type === "mention") {
-      attrs = {
-        Name: item.Name,
-        ID: item.ID
-      };
-    } else {
-      attrs = {
-        tag: item.tag
-      };
-    }
-    var node = view.state.schema.nodes[state.type].create(attrs);
-    var tr = view.state.tr.replaceWith(state.range.from, state.range.to, node);
+    if (item) {
+      var attrs;
+      if (state.type === "mention") {
+        attrs = {
+          Name: item.Name,
+          ID: item.ID
+        };
+      } else {
+        attrs = {
+          tag: item.tag
+        };
+      }
+      var node = view.state.schema.nodes[state.type].create(attrs);
+      var tr = view.state.tr.replaceWith(state.range.from, state.range.to, node);
 
-    var newState = view.state.apply(tr);
-    view.updateState(newState);
+      var newState = view.state.apply(tr);
+      view.updateState(newState);
+    }
   };
 
   /**
