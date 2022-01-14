@@ -312,11 +312,17 @@ function getMentionsPlugin(opts) {
         state.startIndex > opts.fetchNumber
           ? state.startIndex - opts.fetchNumber
           : 1;
+      var lastValue;
+      if (state.suggestions.length > 0 )
+      {
+        lastValue = state.suggestions[0].Name;
+      }
       // get suggestions and set new state
       opts.getSuggestions(
         state.text,
-        state.startIndex,
         state.endIndex - state.startIndex - (opts.fetchNumber * 3 - 1),
+        lastValue,
+        true,
         function(suggestions) {
           state.endOfList = false;
           // update `state` argument with suggestions
@@ -331,11 +337,17 @@ function getMentionsPlugin(opts) {
 
   var nextPage = async function(view, state, opts) {
     if (!state.endOfList) {
+      var lastValue;
+      if (state.suggestions.length > 0 )
+      {
+        lastValue = state.suggestions[state.suggestions.length - 1].Name;
+      }
       // get suggestions and set new state
       opts.getSuggestions(
         state.text,
-        state.endIndex + 1,
         opts.fetchNumber,
+        lastValue,
+        false,
         function(suggestions) {
           if (suggestions.length < opts.fetchNumber) {
             state.endOfList = true;
@@ -471,6 +483,11 @@ function getMentionsPlugin(opts) {
       return {
         update: view => {
           var state = this.key.getState(view.state);
+          var lastValue;
+          if (state.suggestions.length > 0 )
+          {
+            lastValue = state.suggestions[state.suggestions.length - 1].Name;
+          }
           if (!state.text) {
             hideList();
             clearTimeout(showListTimeoutId);
@@ -483,8 +500,9 @@ function getMentionsPlugin(opts) {
               state.endIndex = opts.fetchNumber * 3;
               opts.getSuggestions(
                 state.text,
-                state.startIndex,
                 state.endIndex,
+                lastValue,
+                false,
                 function(suggestions) {
                   // update `state` argument with suggestions
                   state.suggestions = suggestions;

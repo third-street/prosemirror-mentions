@@ -1,10 +1,10 @@
 {
   "name": "prosemirror-mentions",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "ProseMirror plugin for enabling @mentions & #hashtags",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
-  "peerDependencies": {
+  "dependencies": {
     "prosemirror-state": "^1.2.2",
     "prosemirror-view": "^1.4.2"
   },
@@ -34,7 +34,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joelewis/prosemirror-mentions.git"
+    "url": "git+https://github.com/third-street/prosemirror-mentions.git"
   },
   "keywords": [
     "ProseMirror",
@@ -42,10 +42,10 @@
     "Mention",
     "Hashtag"
   ],
-  "author": "Joe Lewis <lewis.joe.18@gmail.com>",
+  "author": "Mark Nelson <mnelson@bantam-tech.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/joelewis/prosemirror-mentions/issues"
+    "url": "https://github.com/third-street/prosemirror-mentions/issues"
   },
-  "homepage": "https://github.com/joelewis/prosemirror-mentions#readme"
+  "homepage": "https://github.com/third-street/prosemirror-mentions#readme"
 }
