@@ -370,6 +370,7 @@ function getMentionsPlugin(opts) {
       if (state.type === "mention") {
         attrs = {
           Name: item.Name,
+          TypeID: item.TypeID,
           ID: item.ID
         };
       } else {
@@ -525,6 +526,7 @@ const mentionNode = {
 
   attrs: {
     ID: "",
+    TypeID: "",
     Name: ""
   },
 
@@ -536,6 +538,7 @@ const mentionNode = {
       "span",
       {
         "data-mention-id": node.attrs.ID,
+        "data-mention-typeid": node.attrs.TypeID,
         "data-mention-Name": node.attrs.Name,
         title: node.attrs.Name,
         class: "prosemirror-mention-node"
@@ -547,13 +550,15 @@ const mentionNode = {
   parseDOM: [
     {
       // match tag with following CSS Selector
-      tag: "span[data-mention-id][data-mention-name]",
+      tag: "span[data-mention-id][data-mention-typeid][data-mention-name]",
 
       getAttrs: dom => {
         var ID = dom.getAttribute("data-mention-id");
+        var TypeID = dom.getAttribute("data-mention-typeid");
         var Name = dom.getAttribute("data-mention-name");
         return {
           ID: ID,
+          TypeID: TypeID,
           Name: Name
         };
       }

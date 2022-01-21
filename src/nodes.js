@@ -8,6 +8,7 @@ export const mentionNode = {
 
   attrs: {
     ID: "",
+    TypeID: "",
     Name: ""
   },
 
@@ -19,7 +20,8 @@ export const mentionNode = {
       "span",
       {
         "data-mention-id": node.attrs.ID,
-        "data-mention-Name": node.attrs.Name,
+        "data-mention-typeid": node.attrs.TypeID,
+        "data-mention-name": node.attrs.Name,
         title: node.attrs.Name,
         class: "prosemirror-mention-node"
       },
@@ -30,13 +32,15 @@ export const mentionNode = {
   parseDOM: [
     {
       // match tag with following CSS Selector
-      tag: "span[data-mention-id][data-mention-name]",
+      tag: "span[data-mention-id][data-mention-typeid][data-mention-name]",
 
       getAttrs: dom => {
         var ID = dom.getAttribute("data-mention-id");
+        var TypeID = dom.getAttribute("data-mention-typeid");
         var Name = dom.getAttribute("data-mention-name");
         return {
           ID: ID,
+          TypeID: TypeID,
           Name: Name
         };
       }
