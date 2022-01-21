@@ -30,8 +30,8 @@ var mentionPlugin = getMentionsPlugin({
       if (type === "mention") {
         // pass dummy mention suggestions
         done([
-          { Name: "John Doe", ID: "101" },
-          { Name: "Joe Lewis", ID: "102" }
+          { Name: "John Doe", TypeID: "123", ID: "101" },
+          { Name: "Joe Lewis", TypeID: "111", ID: "102" }
         ]);
       } else {
         // pass dummy tag suggestions
